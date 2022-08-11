@@ -24,24 +24,24 @@
 **Находим все строки с admin: и удаляем их (часто пригождалось, когда менял права доступа на линуксовых шарах, предварительн выгрузив их):**
 ```sed '/admin:/d' file.acl > file_new.acl```
 
-Заменяем все вхождения строки search на replace:
-sed 's/search/replace/g' file.txt > file_new.txt
+**Заменяем все вхождения строки search на replace:**
+```sed 's/search/replace/g' file.txt > file_new.txt```
 
 Удаляем все пробелы и символы табуляции в начале каждой строки файла (помогает чистить конфиги):
-sed 's/^[ \t]*//' extensions.conf > extensions.conf.new
+```sed 's/^[ \t]*//' extensions.conf > extensions.conf.new```
 
 Удаляем строки, где знак комментария ; стоит в начале строки (то же самое, помогает чистить конфиги, особенно астериска):
-sed '/^;/d' sip.conf
-grep -E -v ';|^$' php.ini
+```sed '/^;/d' sip.conf```
+```grep -E -v ';|^$' php.ini```
 
 Удаляем пустые строки:
-sed '/^$/d' file.txt
+```sed '/^$/d' file.txt```
 
 Заменить рукурсивно текст во всех файлах:
-grep 'надо поменять' -P -R -I -l * | xargs sed -i 's/надо_поменять/меняем_на_это/g'
+```grep 'надо поменять' -P -R -I -l * | xargs sed -i 's/надо_поменять/меняем_на_это/g'```
 
 Считаем количество процессов nodejs:
-ps ax | grep "nodejs" | wc -l
+```ps ax | grep "nodejs" | wc -l```
 
 Считаем количество процессов в системе и выводим 5, которые запустили больше всего экземпляров:
-ps -ef | awk '{ print $8 }' | sort -n | uniq -c | sort -n | tail -5
+```ps -ef | awk '{ print $8 }' | sort -n | uniq -c | sort -n | tail -5```
